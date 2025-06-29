@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Words
+{% endblock %}
+
+{% block body %}
+	<h1>Words</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ word.id }}</td>
+			</tr>
+			<tr>
+				<th>Spelling</th>
+				<td>{{ word.spelling }}</td>
+			</tr>
+			<tr>
+				<th>Meaning</th>
+				<td>{{ word.meaning }}</td>
+			</tr>
+			<tr>
+				<th>Variants</th>
+				<td>{{ word.variants ? word.variants|join(', ') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Peul</th>
+				<td>{{ word.peul }}</td>
+			</tr>
+			<tr>
+				<th>French</th>
+				<td>{{ word.french }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_words_index') }}">back to list</a>
+
+	<a href="{{ path('app_words_edit', {'id': word.id}) }}">edit</a>
+
+	{{ include('words/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %}
+	<div class="mx-auto col-10 col-sm-10 col-md-8 col-lg-6 py-5 vh-100 d-flex align-items-center">
+		<div class="p-4 p-md-5 border rounded-3 bg-body-tertiary w-100">
+			<h1 class="h3 mb-3 font-weight-normal text-center">Inscription</h1>
+			{{ form(registrationForm) }}
+				<p class="text-center p-2">Vous avez déjà un compte ? Connectez-vous
+					<a href="{{path('app_login')}}">ici</a>
+				</p>
+			</div>
+		</div>
+	{% endblock %}

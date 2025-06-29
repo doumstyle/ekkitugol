@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ekkitugol
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container-fluid d-flex min-h-3/4 flex-column align-items-center">
+		<header class="container-fluid d-flex justify-content-between py-3 border-bottom align-items-center position-fixed bg-white">
+			<img src="{{asset('images/logo-light.svg')}}" alt="Logo Ekkitugol" class="d-none d-md-block ms-5" id="logo-large" height="100" width="100" data-light-src="{{asset('images/logo-light.svg')}}" data-dark-src="{{asset('images/logo-dark.svg')}}">
+			<div class="d-flex gap-2 justify-content-center h-25 me-5">
+				<a href="{{path('app_login')}}" type="button" class="btn btn-success px-4">Connexion</a>
+				<a href="{{path('app_register')}}" type="button" class="btn btn-outline-secondary px-4">Inscription</a>
+			</div>
+		</header>
+		<div class="row flex-lg-row-reverse justify-content-center align-items-center  py-5" style="margin-top: 5rem;">
+
+			<div class="row justify-content-center align-items-center  py-5">
+				<div class="col-10">
+					<div class="row flex-lg-row-reverse align-items-center  py-5">
+						<div class="col-10 col-sm-8 col-lg-6">
+							<img src="{{asset('images/' ~ 'boy-writing.jpg')}}" class="d-block mx-lg-auto img-fluid rounded-4 shadow" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+						</div>
+						<div class="col-lg-6">
+							<h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 text-break inknut-antiqua-semibold">Apprenez le Peul
+							</h1>
+							<p class="display-5 fw-bold lh-1 mb-3 text-success inknut-antiqua-semibold">en vous amusant !</p>
+
+							<p class="lead lh-3 mb-4">Apprendre le Peul n'a jamais été aussi simple. Venez découvrir cette langue parlée dans plusieurs pays d'Afrique sub-saharienne.</p>
+							<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+								<a href="{{path('app_login')}}" type="button" class="btn btn-success btn-lg px-4 me-md-2">Connexion</a>
+								<a href="{{path('app_register')}}" type="button" class="btn btn-outline-secondary btn-lg px-4">Inscription</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center align-items-center  py-5">
+				<div class="col-10">
+					<div class="row flex-lg-row align-items-center  py-5">
+						<div class="col-10 col-sm-8 col-lg-6">
+							<img src="{{asset('images/' ~ 'mic_headphones.jpg')}}" class="d-block mx-lg-auto img-fluid rounded-4 shadow" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+						</div>
+						<div class="col-lg-6">
+							<h1 class="display-6 fw-bold text-success lh-1 mb-3 text-break inknut-antiqua-semibold">Ecoutez. Répetez. Retenez.
+							</h1>
+							<p class="lead lh-3 mb-4">Grâce aux leçons audio, vous allez mémoriser le
+								<span class="text-success fw-bold">Peul</span>
+								en un éclair ⚡. Elles sont conçues avec l'aide de locuteurs natifs 🎙️. Pour une immersion totale dans la langue.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center align-items-center  py-5">
+				<div class="col-10">
+					<div class="row flex-lg-row-reverse align-items-center  py-5">
+						<div class="col-10 col-sm-8 col-lg-6">
+							<img src="{{asset('images/' ~ 'medals.jpg')}}" class="d-block mx-lg-auto img-fluid rounded-4 shadow" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+						</div>
+						<div class="col-lg-6">
+							<h1 class="display-6 fw-bold text-success lh-1 mb-3 text-break inknut-antiqua-semibold">Restez motivé !
+							</h1>
+							<p class="lead lh-3 mb-4">Pratiquez au quotidien, progressez et atteingnez le sommet du classement 🥇! A chaque leçon, vous gagnez de l'expérience (XP) et gravissez les échelons du classement global.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center align-items-center  py-5">
+				<div class="col-10">
+					<div class="row flex-lg-row align-items-center  py-5">
+						<div class="col-10 col-sm-8 col-lg-6">
+							<img src="{{asset('images/' ~ 'devices.jpg')}}" class="d-block mx-lg-auto img-fluid rounded-4 shadow" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+						</div>
+						<div class="col-lg-6">
+							<h1 class="display-6 fw-bold text-success lh-1 mb-3 text-break inknut-antiqua-semibold">Apprenez partout, tout le temps !
+							</h1>
+
+							<p class="lead lh-3 mb-4">
+								<span class="text-success fw-bold">Ekkitugol</span>
+								est optimisé pour fonctionner sur tous les appareils 📱💻. Plus d'excuses, vous pouvez pratiquer à tout moment et en tout endroit.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center align-items-center  py-5">
+				<div class="col-10">
+					<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+						<div class="col-md-4 d-flex align-items-center">
+							<a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1" aria-label="Bootstrap">
+								<svg class="bi" width="30" height="24" aria-hidden="true">
+									<use xlink:href="#bootstrap"></use>
+								</svg>
+							</a>
+							<span class="mb-3 mb-md-0 text-body-secondary">©2025 - Ekkitugol</span>
+						</div>
+						<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+							<li class="ms-3">
+								<img src="{{asset('images/logo-light.svg')}}" alt="Logo Ekkitugol" class="d-none d-md-block ms-5" id="logo-large" height="100" width="100" data-light-src="{{asset('images/logo-light.svg')}}" data-dark-src="{{asset('images/logo-dark.svg')}}">
+							</li>
+							<li class="ms-3">
+								<a class="text-body-secondary" href="#" aria-label="Facebook">
+									<svg class="bi" width="24" height="24">
+										<use xlink:href="#facebook"></use>
+									</svg>
+								</a>
+							</li>
+						</ul>
+					</footer>
+				</div>
+			</div>
+
+
+		{% endblock %}

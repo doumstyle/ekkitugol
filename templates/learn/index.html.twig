@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ekkitugol - Apprendre
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-fluid d-flex justify-content-start align-items-center p-0">
+
+		{% include("navigation.html.twig") %}
+
+		{# Main central content #}
+		<div class="flex-fill" id="central-content">
+
+			{% if currentPath == '/learn' %}
+
+				{# Render learn page content #}
+
+				<div class="d-flex flex-column align-items-center justify-content-start h-100">
+					<div class="container text-center p-3 mt-4">
+						<h1 class="inknut-antiqua-semibold">Ekkitugol</h1>
+						<p class="lead">
+							signifie apprendre à quelqu'un, enseigner, instruire dans la langue Peul parlé entre autre en Guinée.</p>
+						<p class="lead">Sélectionnez une leçon ci-dessous pour commencer à apprendre le Peul.</p>
+					</div>
+					<div class="d-flex flex-column align-items-center my-3 p-3 text-center gap-2">
+						<h2 class="inknut-antiqua-semibold">Apprenons les sons Peul !</h2>
+						<p class="lead">Entrainer votre oreille et apprenez a prononcer les sons Peul</p>
+						<a href="{{path('app_lessons')}}" class="btn btn-success btn-lg" id="startBtn">Commencer +10 XP</a>
+					</div>
+
+					<div class="d-flex flex-column align-items-center my-3 p-3 text-center gap-2">
+						<h2 class="inknut-antiqua-semibold">Apprenons les mots Peul !</h2>
+						<p class="lead">Traduisez les phrases Peul pour apprendre le vocabulaire</p>
+						<a href="{{path('app_lessons_sentences')}}" class="btn btn-success btn-lg" id="startBtn">Commencer +25 XP</a>
+					</div>
+				</div>
+
+
+			{% elseif currentPath == "/sounds" %}
+				{# Render sounds page content #}
+				{% include("learn/sounds.html.twig") %}
+
+			{% elseif currentPath == "/words" %}
+				{# Render sounds page content #}
+				{% include("words/index.html.twig") %}
+
+
+			{% elseif currentPath == "/leaderboard" %}
+				{# Render leaderboard page content #}
+				{% include("learn/leaderboard.html.twig") %}
+
+
+			{% elseif currentPath == "/profile" %}
+				{# Render profile page content #}
+				{% include("profile/index.html.twig") %}
+
+			{% endif %}
+
+		</div>
+	</div>
+
+
+	{% block script %}
+		 <script src="{{asset('js/soundLesson.js')}}" defer></script>
+
+
+	{% endblock %}
+{% endblock %}

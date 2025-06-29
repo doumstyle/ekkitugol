@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{# Main container for the lesson interface, holding data for JavaScript #}
+	<div
+		class="d-flex flex-column justify-content-between vh-100" id="sentenceLessonInterface" data-lessons="{{ sentence_lessons|json_encode|e('html_attr') }}" data-return-path="{{ path('app_lessons_sentences') }}" {# Path to restart or return #} data-home-path="{{ path('app_home') }}" {# Path for the close button #} data-complete-set-url="{{ path('app_sentences_complete_set') }}" data-error-message="{{ error_message|default('')|e('html_attr') }}">
+
+		{# Top section: Close button and Progress Bar #}
+		<div class="container pt-3">
+			<div class="d-flex align-items-center w-100 mb-4" id="progressContainer">
+				<a href="{{ path('app_words_index') }}" id="closeBtn" class="bi bi-x text-secondary text-decoration-none fs-1 me-3"></a>
+				<div class="progress flex-grow-1" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="height: 20px;">
+					<div id="progressBarFill" class="progress-bar bg-success" style="width: 0%;"></div>
+				</div>
+			</div>
+
+			{# Question Area #}
+			<div id="questionArea" class="text-center">
+				<h2 class="fw-bold mb-3" id="questionTitle">Quelle est la traduction française de :</h2>
+				<div id="peulSentenceCard" class="card mb-4 shadow-sm">
+					<div class="card-body">
+						<p class="card-text fs-3" id="peulSentenceDisplay">Chargement de la phrase...</p>
+					</div>
+				</div>
+
+				{# Options Container #}
+				<div
+					id="optionsContainer" class="list-group mb-4">{# Option buttons will be dynamically inserted here by JavaScript #}
+				</div>
+			</div>
+
+			{# Lesson Completion View (initially hidden) #}
+			<div id="lessonCompleteView" class="text-center mt-5" style="display: none;">
+				<h2 class="text-success">Leçon Terminée !</h2>
+				<p id="finalScoreText" class="fs-4"></p>
+				<p class="fs-5">Vous avez gagné
+					<strong class="text-success">+25 XP</strong>
+					!</p>
+				<div class="mt-4">
+					<a href="{{ path('app_lessons_sentences') }}" class="btn btn-lg btn-primary me-2">Recommencer</a>
+					<a href="{{ path('app_home') }}" class="btn btn-lg btn-secondary">Retour à l'accueil</a>
+				</div>
+			</div>
+		</div>
+
+		{# Bottom section: Feedback Banner and Action Buttons #}
+		<div>
+			{# Feedback Banner (initially hidden) #}
+			<div id="feedbackBanner" class="container-fluid p-3 text-center d-none" role="alert">
+				<div class="container">
+					<h4 id="feedbackText" class="mb-2"></h4>
+					<p id="correctAnswerDisplay" class="fs-5 mb-2"></p>
+					<button id="continueBtn" class="btn btn-lg">Continuer</button>
+				</div>
+			</div>
+
+			{# Action Buttons Container #}
+			<div id="actionButtonsContainer" class="container-fluid">
+				<hr class="my-0">
+				<div class="container d-flex justify-content-between py-3">
+					<button id="skipBtn" class="btn btn-lg btn-outline-warning px-md-5">Passer</button>
+					<button id="checkBtn" class="btn btn-lg btn-success px-md-5" disabled>Vérifier</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{# Include the external JavaScript file #}
+	 <script src="{{ asset('js/sentences.js') }}" defer></script>
+{% endblock %}

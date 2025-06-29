@@ -1,0 +1,26 @@
+{% block body %}
+
+
+	<div class="d-flex flex-column mt-5" id="leaderboardContainer">
+		<div class="d-flex flex-column align-items-center mt-4">
+			<h1 class="text-center inknut-antiqua-semibold">Classement Global</h1>
+			<p class="lead text-center">Effectuez des leçons pour grimper dans le classement !</p>
+		</div>
+
+		<hr class="my-3 w-50 mx-auto">
+
+		<div class="d-flex flex-column align-items-center mt-4 overflow-y-auto fs-5 px-3" id="leaderboard"></div>
+	</div>
+
+	 <script>
+															window.leaderboardAssetPaths = {
+																firstPlaceIcon: "{{ asset('images/first.svg') }}",
+																secondPlaceIcon: "{{ asset('images/second.svg') }}",
+																thirdPlaceIcon: "{{ asset('images/third.svg') }}",
+																profilePicturesBase: "{{ asset('images/profiles/') }}"
+															};
+															window.leaderboardApiUrl = "{{ path('api_get_leaderboard') }}";
+														</script>
+	 <script src="{{ asset('js/leaderboard.js') }}"></script>
+
+{% endblock %}

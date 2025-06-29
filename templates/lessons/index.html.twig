@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LessonsController!
+{% endblock %}
+
+{% block body %}
+	{# Prepare the lessons array for JavaScript, resolving audio paths #}
+	{% set js_lessons = [] %}
+	{% for lesson in lessons_from_controller %}
+		{% set js_lessons = js_lessons|merge([{
+            'name': lesson.name,
+            'audioSrc': asset('audio/letters/' ~ lesson.audio_filename),
+            'options': lesson.options,
+            'correctAnswer': lesson.correctAnswer,
+            'translation': lesson.translation
+        }]) %}
+	{% endfor %}
+
+	{# Define the return path for JavaScript #}
+	{% set return_path_for_js = path('app_sounds') %}
+
+	<div class="d-flex flex-column justify-content-between vh-100" id="lessonInterface" data-lessons="{{ js_lessons|json_encode|e('html_attr') }}" data-return-path="{{ return_path_for_js|e('html_attr') }}" data-complete-set-url="{{ path('app_lessons_complete_set')}}">
+		<div class="container flex-fluid">
+			<div class="d-flex flex-column align-items-center gap-5">
+				<div class="d-flex align-items-center w-100" id="progressContainer">
+					<a href="{{path('app_sounds')}}" class="bi bi-x text-center fs-1 me-2 text-secondary text-decoration-none"></a>
+					<div class="relative progress w-75 flex-fill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-bar text-bg-success"></div>
+					</div>
+				</div>
+				<h2 class="fw-bold text-start  mb-5 me-5">Qu'est-ce-que vous entendez ?</h2>
+				<div class="d-flex flex-column align-items-center gap-3">
+					<a href="#" class="btn btn-primary fs-1 mt-5 d-inline-flex align-items-center justify-content-center p-3" id="playBtn">
+						<i class="bi bi-volume-up-fill"></i>
+					</a>
+					<audio id="lessonAudio"></audio>
+					<div class="w-100 d-flex flex-column flex-sm-row justify-content-center gap-3 mb-5" id="answer">
+						<a href="#" class="fs-5 px-5 firstAnswer">Option 1</a>
+						<a href="#" class="fs-5 px-5 secondAnswer">Option 2</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="translationBanner" class="container-fluid bg-success-subtle text-success text-center p-3 d-none" role="alert">
+			<p id="translationText" class="fs-5"></p>
+			<button id="continueFromBannerBtn" class="btn btn-success mt-2">Continuer</button>
+		</div>
+
+		<div class="container-fluid d-flex flex-column" id="skipOrCheckContainer">
+			<hr class="mt-5 w-100">
+			<div class="d-flex justify-content-between w-100 mb-5 mt-2">
+				<a href="#" class="btn btn-outline-warning fs-5 px-5 py-3 ms-5" id="skipBtn">Passer</a>
+				<a href="#" class="btn btn-outline-success fs-5 px-5 py-3 me-5" id="checkBtn">Vérifier</a>
+			</div>
+		</div>
+	</div>
+
+    <script src="{{ asset('js/lesson-utils.js') }}"></script>
+    <script src="{{ asset('js/lessons.js') }}"></script>
+{% endblock %}

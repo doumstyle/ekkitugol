@@ -1,0 +1,42 @@
+.answer-word {
+			cursor: grab;
+			transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+		}
+		.answer-word.dragging {
+			opacity: 0.4;
+			transform: scale(0.95);
+			cursor: grabbing;
+		}
+		.drop-zone.drag-over,
+		.word-bank.drag-over {
+			background-color: #f0f0f0;
+			border-style: solid;
+		}
+		/* Placeholder text for empty drop zone */
+		.drop-zone:empty::before {
+			content: "Faites glisser les mots ici ou cliquez sur les mots pour les déposer ici";
+			color: #aaa;
+			font-style: italic;
+			width: 100%;
+			text-align: center;
+		}
+
+#dropTarget {
+	border: 2px dashed #ccc; 
+	min-height: 70px; 
+	border-radius: .5rem;
+}
+
+#answerBtnsContainer {
+	border: 2px dashed #eee; 
+	min-height: 70px; 
+	border-radius: .5rem;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}

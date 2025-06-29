@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+.inknut-antiqua-light {
+  font-family: "Inknut Antiqua", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.inknut-antiqua-semibold {
+  font-family: "Inknut Antiqua", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.inria-sans-regular {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.active {
+  background-color: #198754 !important;
+  color: white !important;
+  /* padding: 0.5rem 1rem !important; */
+  border-radius: 0.375rem !important;
+}
+
+.hiddenScrollbar {
+  scrollbar-width: none !important;
+}
+
+#navigation {
+  min-height: 100vh !important;
+  max-width: 400px !important;
+  scrollbar-width: none;
+}
+
+#navigation ul li:hover {
+  background-color: #adb5bd !important;
+  border-radius: 0.375rem !important;
+}
+
+#navigation .dropdown ul li a:hover {
+  background-color: #adb5bd !important;
+}
+
+#central-content {
+  min-width: 500px !important;
+  max-width: 900px !important;
+}
+
+#central-content,
+#soundsContainer,
+#wordsContainer,
+#profileContainer,
+#leaderboardContainer {
+  scrollbar-width: none;
+  margin: 0 auto;
+}
+
+#profileContainer>div {
+  width: 400px !important;
+}
+
+#quests,
+#league {
+  width: 90% !important;
+}
+
+#startBtn {
+  box-shadow: 0 4px 1px 0 rgb(7 80 46) !important;
+}
+
+#editProfile {
+  background-color: var(--bs-success);
+  color: var(--bs-light);
+}
+
+.soundBtn {
+  width: 80px !important;
+}
+
+.lessonCircle {
+  width: 128px !important;
+  height: 128px !important;
+}
+
+/* Lessons styles */
+
+#progressContainer {
+  width: 75vw !important;
+  margin: 30px auto !important;
+}
+
+#playBtn {
+  height: 120px !important;
+  width: 120px !important;
+  border-radius: 30% !important;
+  box-shadow: 0 4px 0 0 rgb(13 110 253) !important;
+}
+
+#answer a {
+  text-decoration: none !important;
+  color: #111;
+  width: 250px;
+  border: 1px solid #ccc !important;
+  border-radius: 0.75rem !important;
+  padding: 0.5rem 4rem !important;
+  text-align: center;
+  box-shadow: 0 3px 0 0 #ccc !important;
+}
+
+#answer a:hover {
+  background-color: #eee !important;
+}
+
+#skipOrCheckContainer {
+  height: 200px !important;
+}
+
+#skipOrCheckContainer a:first-child {
+  box-shadow: 0 3px 0 0 var(--bs-warning) !important;
+}
+
+#skipOrCheckContainer a:last-child {
+  box-shadow: 0 3px 0 0 rgb(7, 80, 46, 0.75) !important;
+}
+
+html[data-bs-theme="dark"] #startBtn {
+  /* Apply styles similar to .btn-warning */
+  --bs-btn-color: var(--bs-dark);
+  /* Often dark text on warning */
+  --bs-btn-bg: var(--bs-warning);
+  --bs-btn-border-color: var(--bs-warning);
+  --bs-btn-hover-color: var(--bs-dark);
+  --bs-btn-hover-bg: #ffda6a;
+  /* Slightly darker warning for hover */
+  --bs-btn-hover-border-color: #ffda6a;
+  --bs-btn-focus-shadow-rgb: 217, 164, 6;
+  /* From Bootstrap's _buttons.scss */
+  --bs-btn-active-color: var(--bs-dark);
+  --bs-btn-active-bg: #ffdd72;
+  /* Slightly lighter warning for active */
+  --bs-btn-active-border-color: #ffdd72;
+  --bs-btn-disabled-color: var(--bs-dark);
+  --bs-btn-disabled-bg: var(--bs-warning);
+  --bs-btn-disabled-border-color: var(--bs-warning);
+  box-shadow: 0 4px 1px 0 var(--bs-warning) !important;
+}
+
+html[data-bs-theme="dark"] #navigation ul li:hover {
+  background-color: #6c757d !important;
+}
+
+html[data-bs-theme="dark"] #navigation .dropdown ul li a:hover {
+  background-color: #6c757d !important;
+}
+
+html[data-bs-theme="dark"] #navigation ul li a.nav-link.active {
+  background-color: var(--bs-warning) !important;
+  color: var(--bs-dark) !important;
+}
+
+html[data-bs-theme="dark"] .sound-container.bg-warning.text-dark .fw-bold.text-dark {
+  color: var(--bs-secondary) !important;
+}
+
+html[data-bs-theme="dark"] #editProfile {
+  background-color: var(--bs-warning) !important;
+  color: var(--bs-dark) !important;
+}
+
+#leaderboard {
+  scrollbar-width: none !important;
+}
+
+#sentencesContainer ul,
+#leaderboard {
+  height: calc(70vh - 100px) !important;
+  margin: 0 auto !important;
+}
+
+
+
+@media(max-width: 767.98px) {
+
+  /* Below Bootstrap MD breakpoint */
+  #landingPicContainer {
+    width: 100% !important;
+  }
+
+  #navigation {
+    width: auto !important;
+    /* Allow sidebar to shrink to content */
+    padding-left: 0.5rem !important;
+    /* Override p-3 for horizontal */
+    padding-right: 0.5rem !important;
+    /* Override p-3 for horizontal */
+  }
+
+  /* Ensure logos in the collapsed sidebar are reasonably sized if img-fluid is used */
+  #navigation #logo-small {
+    max-height: 50px;
+    /* Adjust as needed */
+    width: auto;
+  }
+
+  #navigation .nav-pills .nav-link {
+    padding: 0.75rem 0.5rem;
+    /* Adjust vertical padding */
+    /* Adjust horizontal padding for centered icon */
+    display: flex;
+    /* Enable flex for centering icon */
+    justify-content: center;
+    /* Center icon horizontally */
+    align-items: center;
+    /* Center icon vertically */
+  }
+
+  #navigation .nav-pills .nav-link i {
+    font-size: 1.75rem;
+    /* Make icons larger */
+    /* margin-right is handled by .me-md-2 on the icon */
+  }
+
+  /* Profile and Theme toggle section at the bottom */
+  #navigation .dropdown {
+    margin-bottom: 0.5rem;
+    /* Space between profile and theme button in column layout */
+  }
+
+  #navigation .dropdown img.rounded-circle {
+    width: 32px !important;
+    height: 32px !important;
+    margin-right: 0.5rem !important;
+  }
+
+  /* Style the dropdown menu in collapsed navigation */
+  #navigation .dropdown-menu {
+    min-width: auto;
+    padding: 0.25rem;
+  }
+
+  #navigation .dropdown-menu .dropdown-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    line-height: 1;
+  }
+}
+
+@media(max-width: 575.98px) {
+  body {
+    padding-bottom: 75px !important;
+  }
+
+  div.container-fluid {
+    justify-content: center !important;
+  }
+
+  #central-content {
+    padding-bottom: 75px !important;
+  }
+
+  #navigation {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    min-height: 0vh !important;
+    overflow: visible !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    z-index: 1030;
+    border-top: 1px solid var(--bs-border-color, #dee2e6) !important;
+    background-color: var(--bs-body-tertiary-bg, #f8f9fa);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1) !important;
+    max-width: none !important;
+  }
+
+  #navigation>a[href='/'],
+  #navigation>hr:first-of-type {
+    display: none !important;
+  }
+
+  #navigation .nav {
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    margin: 0 !important;
+    gap: 0 !important;
+    font-size: 1rem !important;
+  }
+
+  #navigation .nav-item {
+    flex: 1 1 0;
+    display: flex;
+    align-items: stretch;
+  }
+
+  #navigation .nav-link {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.5rem 0.25rem !important;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 !important;
+  }
+
+  #navigation .nav-link.active,
+  #navigation .nav-link:hover {
+    border-radius: 0 !important;
+  }
+
+  #navigation .nav-link i {
+    margin-right: 0 !important;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  #navigation .pt-2 {
+    display: none !important;
+  }
+}

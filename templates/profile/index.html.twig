@@ -1,0 +1,25 @@
+{% block body %}
+
+	<div class="d-flex flex-column vh-100 overflow-y-auto align-items-center" id="profileContainer">
+		<div class="card mx-auto mt-3 mb-5">
+			<img src="{{asset('images/profiles/' ~ user.profile.picture)}}" alt="Photo de profil" class="card-img-top">
+			<div class="card-body">
+				<h5 class="card-title inknut-antiqua-semibold">{{user.firstname}}</h5>
+				<p class="card-text fst-italic">{{user.profile.description}}</p>
+				<p class="card-text">{{user.email}}</p>
+				<p class="card-text">Inscrit depuis :
+					{{user.profile.createdAt|format_datetime(locale='fr', pattern='MMMM yyyy')|capitalize}}</p>
+				<p class="card-text">Expérience :
+					{{user.profile.xp}}
+					XP</p>
+
+				<a href="{{path('app_profile_edit', {'id': user.profile.id})}}" class="btn" id="editProfile">Modifier</a>
+				{% if user %}
+					<a href="{{ path('app_user_change_password', {'id': user.id}) }}" class="btn btn-secondary">Changer Mot de Passe</a>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

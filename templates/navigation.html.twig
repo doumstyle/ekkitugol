@@ -1,0 +1,128 @@
+{% block body %}
+	{# Navigation sidebar #}
+	<div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary min-vh-100 overflow-auto w-md-25" id="navigation">
+		<a
+			href="/" class="d-flex justify-content-center">
+			{# Logo for small screens (below md) #}
+			<img
+			src="{{asset('images/tree-logo-w.svg')}}" alt="Logo Ekkitugol" class="d-block d-md-none img-fluid" id="logo-small" height="150" width="150" data-light-src="{{asset('images/tree-logo-w.svg')}}" data-dark-src="{{asset('images/tree-logo-b.svg')}}">
+			{# Logo for large screens (md and above) #}
+			<img src="{{asset('images/logo-light.svg')}}" alt="Logo Ekkitugol" class="d-none d-md-block" id="logo-large" height="150" width="150" data-light-src="{{asset('images/logo-light.svg')}}" data-dark-src="{{asset('images/logo-dark.svg')}}">
+		</a>
+		<hr>
+		<ul class="nav nav-pills flex-column mb-auto mx-auto fs-5 gap-2 inknut-antiqua-light">
+			<li class="nav-item">
+				<a href="{{path('app_learn')}}" class="nav-link text-uppercase {% if currentRouteName == 'app_learn' %}bg-success active{% else %}link-body-emphasis{% endif %}" {% if currentRouteName == 'app_learn' %} aria-current="page" {% endif %} title="Apprendre" data-bs-toggle="tooltip" data-bs-placement="right">
+					<i class="bi bi-house-door-fill me-md-2"></i>
+					<span class="d-none d-md-inline">Apprendre</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="{{path('app_sounds')}}" class="nav-link link-body-emphasis text-uppercase {% if currentRouteName == 'app_sounds' %}bg-success active{% else %}link-body-emphasis{% endif %}" {% if currentRouteName == 'app_sounds' %} aria-current="page" {% endif %} title="Sons" data-bs-toggle="tooltip" data-bs-placement="right">
+					<i class="bi bi-volume-up-fill me-md-2"></i>
+					<span class="d-none d-md-inline">Sons</span>
+
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a href="{{path('app_words_index')}}" class="nav-link link-body-emphasis text-uppercase {% if currentRouteName == 'app_words_index' %}bg-success active{% else %}link-body-emphasis{% endif %}" {% if currentRouteName == 'app_words_index' %} aria-current="page" {% endif %} title="Mots" data-bs-toggle="tooltip" data-bs-placement="right">
+					<i class="bi bi-file-word-fill me-md-2"></i>
+					<span class="d-none d-md-inline">Mots</span>
+
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a href="{{path('app_leaderboard')}}" class="nav-link link-body-emphasis text-uppercase {% if currentRouteName == 'app_leaderboard' %}bg-success active{% else %}link-body-emphasis{% endif %}" {% if currentRouteName == 'app_leaderboard' %} aria-current="page" {% endif %} title="Classement" data-bs-toggle="tooltip" data-bs-placement="right">
+					<i class="bi bi-123 me-md-2"></i>
+					<span class="d-none d-md-inline">Classement</span>
+				</a>
+			</li>
+
+			<li class="nav-item d-md-none">
+				<div class="d-flex justify-content-center w-100 py-2">
+					<div class="dropdown">
+						<a href="#" class="nav-link d-flex align-items-center p-0" data-bs-toggle="dropdown" aria-expanded="false" title="{{user.firstname}}" data-bs-toggle="tooltip" data-bs-placement="top">
+							<img src="{{asset('images/profiles/' ~ user.profile.picture)}}" alt="User profile picture" width="32" height="32" class="rounded-circle">
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end text-small shadow">
+							<li>
+								<a href="{{path('app_profile_index')}}" class="dropdown-item" title="Profil">
+									<i class="bi bi-person-fill d-inline d-md-none"></i>
+									<span class="d-none d-md-inline">Profil</span>
+								</a>
+							</li>
+							{% if 'ROLE_ADMIN' in user.roles  %}
+								<li>
+									<a class="dropdown-item" href="{{path("admin")}}" title="Dashboard">
+										<i class="bi bi-speedometer2 d-inline d-md-none"></i>
+										<span class="d-none d-md-inline">Dashboard</span>
+									</a>
+								</li>
+							{% endif %}
+							<li><hr class="dropdown-divider"></li>
+							{# Theme Toggle Button inside dropdown for small screens #}
+							<li>
+								<div class="dropdown-item d-flex justify-content-between align-items-center">
+									<span class="d-none d-md-inline">Thème</span>
+									<button
+										class="btn btn-sm themeToggleBtn p-0" type="button" title="Toggle theme" style="line-height: 1; min-width: 24px; min-height: 24px; display: inline-flex; align-items: center; justify-content: center;">{# Icon will be set by JavaScript #}
+									</button>
+								</div>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{path("app_logout")}}" title="Déconnexion">
+									<i class="bi bi-box-arrow-right d-inline d-md-none"></i>
+									<span class="d-none d-md-inline">Déconnexion</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+		<div class="pt-2 d-none d-md-block">
+			<hr>
+			<div class="d-flex flex-sm-column flex-md-row align-items-center justify-content-center text-center text-md-start justify-content-md-between w-100">
+				<div class="dropdown">
+					<a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="{{user.firstname}}" data-bs-placement="top">
+						<img src="{{asset('images/profiles/' ~ user.profile.picture)}}" alt="User profile picture" width="48" height="48" class="rounded-circle me-md-2 h-xs-32 w-xs-32">
+						<strong class="d-none d-md-inline">{{user.firstname}}</strong>
+					</a>
+					<ul class="dropdown-menu text-small shadow">
+						<li>
+							<a href="{{path('app_profile_index')}}" class="dropdown-item" title="Profil" data-bs-toggle="tooltip" data-bs-placement="right">
+								<i class="bi bi-person-fill d-inline d-md-none"></i>
+								<span class="d-none d-md-inline">Profil</span>
+
+							</a>
+						</li>
+
+						{# Display link to Dashboard if user has role admin #}
+						{% if 'ROLE_ADMIN' in user.roles  %}
+							<li>
+								<a class="dropdown-item" href="{{path("admin")}}" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
+									<i class="bi bi-speedometer2 d-inline d-md-none"></i>
+									<span class="d-none d-md-inline">Dashboard</span>
+								</a>
+							</li>
+						{% endif %}
+
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item" href="{{path("app_logout")}}" title="Déconnexion" data-bs-toggle="tooltip" data-bs-placement="right">
+								<i class="bi bi-box-arrow-right d-inline d-md-none"></i>
+								<span class="d-none d-md-inline">Déconnexion</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<button
+					class="btn btn-sm btn-outline-secondary mt-2 mt-md-0 ms-md-2 themeToggleBtn" type="button" title="Toggle theme">{# Icon will be set by JavaScript #}
+				</button>
+			</div>
+		</div>
+	</div>
+{% endblock %}
