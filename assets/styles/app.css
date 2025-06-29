@@ -269,9 +269,7 @@ html[data-bs-theme="dark"] #editProfile {
   #navigation {
     position: fixed !important;
     bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
+    min-width: 100% !important;
     height: 60px !important;
     min-height: 0vh !important;
     overflow: visible !important;
