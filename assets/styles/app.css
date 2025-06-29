@@ -259,15 +259,15 @@ html[data-bs-theme="dark"] #editProfile {
 }
 
 @media(max-width: 575.98px) {
-  body {
-    padding-bottom: 75px !important;
-  }
-
   div.container-fluid {
     justify-content: center !important;
   }
 
   #central-content {
+    min-width: none !important;
+    max-width: none !important;
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
     padding-bottom: 75px !important;
   }
 
@@ -287,7 +287,7 @@ html[data-bs-theme="dark"] #editProfile {
     border-top: 1px solid var(--bs-border-color, #dee2e6) !important;
     background-color: var(--bs-body-tertiary-bg, #f8f9fa);
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1) !important;
-    max-width: none !important;
+    max-width: 92% !important;
   }
 
   #navigation>a[href='/'],
